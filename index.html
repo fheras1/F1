@@ -4,19 +4,26 @@
             <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
             
      
-        <title>Welcome!</title>
-        
+        <title>Welcome to F1!</title>
+        <style>
+            .btn-large{
+                width: 80%;
+            }
+            .centrar{
+                text-align: center;
+            }
+        </style>
     </head>
 
     <body  ng-controller="ctrl1">
         <button class="btn btn-sm btn-primary" ng-click="comenzar= true">Comenzar</button>
 
 <div ng-show="comenzar">
-    Introduce tu correo y pulsa enviar
+    <h1 class="centrar">Introduce tu correo y pulsa enviar</h1>
   
-    <form name="validar">
-    <input type="email" name="correo" ng-model="correo">
-    <button class="btn btn-sm btn-primary" ng-hide="validar.correo.$error.email || correo==''" ng-click="mostrar= true">Enviar</button>
+    <form class="centrar" name="validar">
+    <input class="btn-large" type="email" placeholder="email@domain.com" name="correo" ng-model="correo">
+    <button class="btn btn-large btn-primary" ng-hide="validar.correo.$error.email || correo==''" ng-click="mostrar= true">Enviar</button>
 
     <div ng-show="validar.correo.$error.email">Introduce un correo válido</div>
     
@@ -25,14 +32,16 @@
 
 <div ng-show="mostrar">
             
-            <div class="table" ng-repeat="lista in listas">
-                <tr>Nombre Escudería</tr>
-                <tr><td>{{lista.Driver.givenName}}</td>
-                <td>{{lista.Driver.familyName}}</td>
-                <td>{{lista.Constructors[0].name}}<span class="badge">Eliminar</span></td></tr>
+            <table class="table" >
+                <tr><td><b>Nombre</b></td><td></td> <td><b>Escudería</b></td><td></td></tr>
+                <tr ng-repeat="lista in listas"> 
+                    <td>{{lista.Driver.givenName}}</td>
+                    <td>{{lista.Driver.familyName}}</td>
+                    <td>{{lista.Constructors[0].name}}</td>
+                    <td><span class="badge">Eliminar</span></td>
+            </tr>
                 
-                </table>
-        </div>
+                </table> 
     </div>
 
     <script src= "https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>    
