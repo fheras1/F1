@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html  ng-app="miapp" >
+    <head>
+            <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+            
+     
+        <title>Welcome!</title>
+        
+    </head>
+
+    <body  ng-controller="ctrl1">
+        <button class="btn btn-sm btn-primary" ng-click="comenzar= true">Comenzar</button>
+
+<div ng-show="comenzar">
+    Introduce tu correo y pulsa enviar
+  
+    <form name="validar">
+    <input type="email" name="correo" ng-model="correo">
+    <button class="btn btn-sm btn-primary" ng-hide="validar.correo.$error.email || correo==''" ng-click="mostrar= true">Enviar</button>
+
+    <div ng-show="validar.correo.$error.email">Introduce un correo válido</div>
+    
+</form>
+</div>
+
+<div ng-show="mostrar">
+            
+            <div class="table" ng-repeat="lista in listas">
+                <tr>Nombre Escudería</tr>
+                <tr><td>{{lista.Driver.givenName}}</td>
+                <td>{{lista.Driver.familyName}}</td>
+                <td>{{lista.Constructors[0].name}}<span class="badge">Eliminar</span></td></tr>
+                
+                </table>
+        </div>
+    </div>
+
+    <script src= "https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>    
+    <script src= "controller.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
+    </body>
+
+    
+</html>
